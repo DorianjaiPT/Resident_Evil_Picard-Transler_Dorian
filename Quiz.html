@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Archives Resident Evil - Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Creepster&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="site-title">☣ UMBRELLA ARCHIVES</div>
+            <nav>
+                <ul>
+                    <li><a href="Acceuil.html">Accueil</a></li>
+                    <li><a href="Jeux.html">Les Jeux</a></li>
+                    <li><a href="Personnage.html">Personnages</a></li>
+                    <li><a href="Zombie.html">Zombies & B.O.W.</a></li>
+                    <li><a href="Quiz.html" class="active">Quiz</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="horror-title">Test d'Habilitation (Quiz 10 Questions)[cite: 1]</h1>
+        
+        <form id="quiz-form">
+            <!-- Q1 -->
+            <div class="quiz-box">
+                <p><strong>1. Quel laboratoire est responsable de la création du Virus-T ?</strong></p>
+                <label><input type="radio" name="q1" value="A"> Tricell</label><br>
+                <label><input type="radio" name="q1" value="B"> Umbrella Corporation</label>
+            </div>
+            <!-- Q2 -->
+            <div class="quiz-box">
+                <p><strong>2. Dans quel jeu Jill Valentine est-elle traquée par le Nemesis ?</strong></p>
+                <label><input type="radio" name="q2" value="A"> Resident Evil 3</label><br>
+                <label><input type="radio" name="q2" value="B"> Resident Evil 4</label>
+            </div>
+            <!-- Q3 -->
+            <div class="quiz-box">
+                <p><strong>3. Quel parasite contrôle les habitants dans Resident Evil 4 ?</strong></p>
+                <label><input type="radio" name="q3" value="A"> Las Plagas</label><br>
+                <label><input type="radio" name="q3" value="B"> Le Virus-G</label>
+            </div>
+            <!-- Q4 -->
+            <div class="quiz-box">
+                <p><strong>4. Quel personnage principal est un policier novice dans RE2 ?</strong></p>
+                <label><input type="radio" name="q4" value="A"> Chris Redfield</label><br>
+                <label><input type="radio" name="q4" value="B"> Leon S. Kennedy</label>
+            </div>
+            <!-- Q5 -->
+            <div class="quiz-box">
+                <p><strong>5. Comment s'appelle le B.O.W. en trench-coat dans RE2 ?</strong></p>
+                <label><input type="radio" name="q5" value="A"> Mr. X</label><br>
+                <label><input type="radio" name="q5" value="B"> Hunter</label>
+            </div>
+            <!-- Q6 -->
+            <div class="quiz-box">
+                <p><strong>6. Dans quel pays se déroule Resident Evil 7 ?</strong></p>
+                <label><input type="radio" name="q6" value="A"> États-Unis (Louisiane)</label><br>
+                <label><input type="radio" name="q6" value="B"> Espagne</label>
+            </div>
+            <!-- Q7 -->
+            <div class="quiz-box">
+                <p><strong>7. Quel est le nom de l'organisme fongique dans RE Village ?</strong></p>
+                <label><input type="radio" name="q7" value="A"> Le Mutamycète</label><br>
+                <label><input type="radio" name="q7" value="B"> Le T-Abyss</label>
+            </div>
+            <!-- Q8 -->
+            <div class="quiz-box">
+                <p><strong>8. Quel est le prénom de la sœur de Chris Redfield ?</strong></p>
+                <label><input type="radio" name="q8" value="A"> Claire</label><br>
+                <label><input type="radio" name="q8" value="B"> Ada</label>
+            </div>
+            <!-- Q9 -->
+            <div class="quiz-box">
+                <p><strong>9. Quel trait physique caractérise Albert Wesker après son infection ?</strong></p>
+                <label><input type="radio" name="q9" value="A"> Des yeux rouges et une force surhumaine</label><br>
+                <label><input type="radio" name="q9" value="B"> Des ailes géantes</label>
+            </div>
+            <!-- Q10 -->
+            <div class="quiz-box">
+                <p><strong>10. Quelle créature aveugle repère ses proies au son ?</strong></p>
+                <label><input type="radio" name="q10" value="A"> Le Licker</label><br>
+                <label><input type="radio" name="q10" value="B"> Le Zombie de base</label>
+            </div>
+
+            <button type="button" class="btn-horror" onclick="validerQuiz()">Valider le Test</button>
+        </form>
+
+        <div id="resultat" class="card" style="display:none; margin-top:20px;">
+            <h2>Résultat de l'Habilitation</h2>
+            <p id="score-text" style="font-size: 1.2rem; font-weight: bold; color: var(--neon-red);"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>BTS CIEL 2026 - Lycée Les Lombards[cite: 1] | Archives de Sécurité Umbrella Corp.</p>
+    </footer>
+
+    <script>
+        function validerQuiz() {
+            const reponses = { q1: "B", q2: "A", q3: "A", q4: "B", q5: "A", q6: "A", q7: "A", q8: "A", q9: "A", q10: "A" };
+            let score = 0;
+            const form = document.getElementById('quiz-form');
+
+            for (let q in reponses) {
+                const selection = form.querySelector(`input[name="${q}"]:checked`);
+                if (selection && selection.value === reponses[q]) {
+                    score++;
+                }
+            }
+
+            const resDiv = document.getElementById('resultat');
+            const scoreText = document.getElementById('score-text');
+            scoreText.textContent = `Votre note : ${score} / 10[cite: 1]`;
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
